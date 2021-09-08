@@ -32,7 +32,7 @@ class BasicPokemon implements Pokemon
         return [
             'name' => $this->name,
             'description' => $this->description,
-            'is_legendary' => $this->isLegendary,
+            'isLegendary' => $this->isLegendary,
             'habitat' => $this->habitat
         ];
     }
