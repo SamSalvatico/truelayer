@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::prefix('pokemon')->group(function () {
+    Route::get('{name}', [App\Http\Controllers\PokemonController::class, 'basic'])
+        ->name('pokemon.basic');
+
+    Route::get('translated/{name}', [App\Http\Controllers\PokemonController::class, 'translated'])
+        ->name('pokemon.translated');
 });

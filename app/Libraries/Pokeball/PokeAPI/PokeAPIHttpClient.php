@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Libraries\PokemonCatcher\PokeAPI;
+namespace App\Libraries\Pokeball\PokeAPI;
 
+use App\Libraries\MissingEnvException;
 use Illuminate\Support\Facades\Http;
 
 class PokeAPIHttpClient
@@ -9,10 +10,10 @@ class PokeAPIHttpClient
     private static ?self $currentInstance = null;
     private string $baseUrl;
 
-    public static function getInstance()
+    public static function getInstance(): PokeAPIHttpClient
     {
         if (empty($currentInstance)) {
-            static::$currentInstance == new PokeAPIHttpClient(config('truelayer.poke_api_url'));
+            static::$currentInstance = new PokeAPIHttpClient(static::ensureBaseUrlIsSet());
         }
 
         return static::$currentInstance;
@@ -39,6 +40,19 @@ class PokeAPIHttpClient
     private function preparePokeAPIUrlToInvoke(string $pokemonName): string
     {
         $baseUrl = $this->baseUrl;
-        return "$baseUrl/pokemon-species/$pokemonName";
+        return "$baseUrl/pokemon-species/$pokemonName/";
+    }
+
+    /**
+     * @throws MissingEnvException
+     */
+    private static function ensureBaseUrlIsSet(): string
+    {
+        $pokeApiUrl = config('truelayer.poke_api_url');
+        if (isset($pokeApiUrl)) {
+            return $pokeApiUrl;
+        }
+
+        throw new MissingEnvException("The configuration value 'truelayer.poke_api_url' is missing");
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Libraries\PokemonCatcher\PokeAPI;
+namespace App\Libraries\Pokeball\PokeAPI;
 
-use App\Libraries\PokemonCatcher\PokemonCatcher;
+use App\Libraries\Pokemon\BasicPokemon;
 use App\Libraries\Pokemon\Pokemon;
 
 class PokeAPIParser
@@ -23,7 +23,7 @@ class PokeAPIParser
 
     public function parse(): Pokemon
     {
-        return Pokemon::box(
+        return BasicPokemon::box(
             $this->getName(),
             $this->getDescription(),
             $this->getIsLegendary(),
@@ -41,8 +41,8 @@ class PokeAPIParser
 
     private function getHabitat(): ?string
     {
-        if (isset($this->serverResponse['habitat'])) {
-            return $this->serverResponse['habitat'];
+        if (isset($this->serverResponse['habitat']) && isset($this->serverResponse['habitat']['name'])) {
+            return $this->serverResponse['habitat']['name'];
         }
         return null;
     }

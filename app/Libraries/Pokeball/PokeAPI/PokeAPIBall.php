@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Libraries\PokemonCatcher\PokeAPI;
+namespace App\Libraries\Pokeball\PokeAPI;
 
-use App\Libraries\PokemonCatcher\PokemonCatcher;
+use App\Libraries\Pokeball\Pokeball;
 use App\Libraries\Pokemon\Pokemon;
 
-class PokeAPICatcher implements PokemonCatcher
+class PokeAPIBall implements Pokeball
 {
     public function catchIt(string $pokemonName): Pokemon
     {
