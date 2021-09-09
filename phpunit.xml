@@ -27,5 +27,8 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
+        <server name="IS_POKEMON_CACHE_ENABLED" value="false"/>
+        <server name="POKE_API_URL" value="https://pokeapitest.co/api"/>
+        <server name="FUNNY_API_URL" value="https://api.test.funtranslations.com/translate"/>
     </php>
 </phpunit>
