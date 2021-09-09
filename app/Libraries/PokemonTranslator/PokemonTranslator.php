@@ -6,5 +6,5 @@ use App\Libraries\Pokemon\Pokemon;
 
 interface PokemonTranslator
 {
-    public function getTranslatedDescription(Pokemon $pokemon): string;
+    public function getTranslatedDescription(Pokemon $pokemon): ?string;
 }

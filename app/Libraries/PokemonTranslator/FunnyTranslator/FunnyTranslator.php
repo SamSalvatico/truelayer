@@ -7,7 +7,7 @@ use App\Libraries\PokemonTranslator\PokemonTranslator;
 
 abstract class FunnyTranslator implements PokemonTranslator
 {
-    final public function getTranslatedDescription(Pokemon $pokemon): string
+    final public function getTranslatedDescription(Pokemon $pokemon): ?string
     {
         $httpClient = $this->getHttpClient();
         $translatedArray = $httpClient->translateIt($pokemon->description());

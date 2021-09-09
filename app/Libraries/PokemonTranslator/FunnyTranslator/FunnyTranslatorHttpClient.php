@@ -31,12 +31,16 @@ class FunnyTranslatorHttpClient
         return $response->json();
     }
 
-    private function ensureResponseIsSuccesfull(Response $response, string $pokemonName): void
+    private function ensureResponseIsSuccesfull(Response $response, string $description): void
     {
         if ($response->successful()) {
             return;
         }
+
         switch ($response->status()) {
+            case 404:
+                dump("HERE");
+                return;
             default:
                 $response->throw();
         }
