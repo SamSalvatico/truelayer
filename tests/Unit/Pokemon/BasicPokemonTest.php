@@ -3,6 +3,7 @@
 namespace Tests\Unit\Pokemon;
 
 use App\Libraries\Pokemon\BasicPokemon;
+use App\Libraries\Pokemon\Pokemon;
 use Tests\TestCase;
 
 class BasicPokemonTest extends TestCase
@@ -20,7 +21,7 @@ class BasicPokemonTest extends TestCase
         $this->assertEquals('cave', $infos['habitat']);
     }
 
-    private function getInstance()
+    private function getInstance(): Pokemon
     {
         return BasicPokemon::box('pippo', 'desc', false, 'cave');
     }

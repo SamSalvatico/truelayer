@@ -11,7 +11,7 @@ class DisabledPokemonCacheManagerTest extends TestCase
     /**
      * @dataProvider methods
      */
-    public function testValueIsNotCached(string $methodName)
+    public function testValueIsNotCached(string $methodName): void
     {
         $cacheManager = new DisabledPokemonCacheManager();
         $firstPokemon = $cacheManager->$methodName('poke', function () {

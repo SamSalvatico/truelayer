@@ -211,7 +211,7 @@ class GeneralPokemonStub
         string $pokemonName,
         bool $isLegendary = false,
         ?string $habitat = null,
-    ) {
+    ): void {
         $responsesArray[(config('truelayer.poke_api_url') . '*')] =
             self::getValidPokeAPIResponse($pokemonName, $isLegendary, $habitat);
     }
@@ -220,7 +220,7 @@ class GeneralPokemonStub
         array &$responsesArray,
         int $statusCode = 404,
         array $body = []
-    ) {
+    ): void {
         $responsesArray[(config('truelayer.poke_api_url') . '*')] =
             Http::response($body, $statusCode);
     }
@@ -229,14 +229,14 @@ class GeneralPokemonStub
         array &$responsesArray,
         int $statusCode = 404,
         array $body = []
-    ) {
+    ): void {
         $responsesArray[(config('truelayer.funny_api_url') . '*')] =
             Http::response($body, $statusCode);
     }
 
     private static function pushValidFunTransAPIResponse(
         array &$responsesArray
-    ) {
+    ): void {
         $responsesArray[(config('truelayer.funny_api_url') . '*')] =
             self::getValidFunTransResponse();
     }
