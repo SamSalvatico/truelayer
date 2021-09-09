@@ -9,6 +9,7 @@
 - [Caching](#caching)
 - [Tests](#tests)
     - [With Makefile](#with-makefile)
+    - [Suites](#suites)
 - [Lifecycle](#lifecycle)
 - [Production TODO](#production-todo)
 
@@ -62,6 +63,18 @@ The next command will run PHPstan, PHPcs and PHPUnit
 ```bash
 $ make test
 ```
+To simply run phpunit
+
+```
+$ ./vendor/bin/sail test
+```
+
+
+### Suites
+
+All the test suites can be found at:
+- *tests/Feature* for the feature tests;
+- *tests/Unit* for unit tests.
 
 ### Lifecycle
 
