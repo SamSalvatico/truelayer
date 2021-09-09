@@ -39,8 +39,10 @@ class FunnyTranslatorHttpClient
 
         switch ($response->status()) {
             case 404:
-                dump("HERE");
                 return;
+            case 429:
+                $body = $response->json('error');
+                throw new FunnyRateException($body['message']);
             default:
                 $response->throw();
         }
