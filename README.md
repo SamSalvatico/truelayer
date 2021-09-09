@@ -10,6 +10,7 @@
 - [Tests](#tests)
     - [With Makefile](#with-makefile)
 - [Lifecycle](#lifecycle)
+- [Production TODO](#production-todo)
 
 ## Project
 
@@ -89,3 +90,14 @@ public function basic(string $name): JsonResponse
 ```
 The `pokemonMaster` property is injected thanks to the DI.
 - The PokemonMaster, that concretely is *app/Libraries/PokemonMaster/TrueLayer.php*, look for the requested Pokemon.
+
+
+## Production TODO
+
+To run it in production the following steps should be implemented:
+- Basic Auth on APIs;
+- Improve caching system, e.g. using Redis;
+- Insert APIs docs;
+- Improve and insert missing tests;
+- Differentiate log files, e.g. inserting one to log requests to POKEAPI, ...;
+- Check which packages in composer and in dockerfile are strictly needed.
