@@ -37,12 +37,12 @@ The application is ready on port 80 of localhost.
 
 Get a basic pokemon:
 ```
-GET /pokemon/{name}
+GET http://localhost/pokemon/{name}
 ```
 
 Get a translated one:
 ```
-GET /pokemon/translated/{name}
+GET  http://localhost/pokemon/translated/{name}
 ```
 
 ## Caching
