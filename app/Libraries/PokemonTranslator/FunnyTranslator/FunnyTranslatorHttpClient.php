@@ -3,7 +3,6 @@
 namespace App\Libraries\PokemonTranslator\FunnyTranslator;
 
 use App\Libraries\MissingEnvException;
-use App\Libraries\Pokeball\NoPokemonFoundException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 

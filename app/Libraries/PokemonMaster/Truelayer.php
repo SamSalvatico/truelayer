@@ -3,28 +3,42 @@
 namespace App\Libraries\PokemonMaster;
 
 use App\Libraries\Pokeball\Pokeball;
+use App\Libraries\Pokemon\Pokemon;
+use App\Libraries\PokemonCache\PokemonCache;
 use App\Libraries\PokemonTranslator\PokemonTranslationChooser;
 
 class TrueLayer implements PokemonMaster
 {
     private Pokeball $pokeball;
+    private PokemonCache $pokemonCache;
 
-    public function __construct(Pokeball $pokeball)
+    public function __construct(Pokeball $pokeball, PokemonCache $pokemonCache)
     {
         $this->pokeball = $pokeball;
+        $this->pokemonCache = $pokemonCache;
     }
 
     public function getBasicInfo(string $pokemonName): array
     {
-        $thePokemon = $this->pokeball->catchIt($pokemonName);
-        return $thePokemon->toArray();
+        return $this->getBasicPokemon($pokemonName)->toArray();
+    }
+
+    private function getBasicPokemon(string $pokemonName): Pokemon
+    {
+        $pokeball = $this->pokeball;
+        return $this->pokemonCache->basic($pokemonName, function () use ($pokeball, $pokemonName) {
+            $pokeball->catchIt($pokemonName);
+        });
     }
 
     public function getTranslatedInfo(string $pokemonName): array
     {
-        $thePokemon = $this->pokeball->catchIt($pokemonName);
-        $tranlatorCreator = PokemonTranslationChooser::getTranslator($thePokemon);
-        $translatedPokemon = $tranlatorCreator->translate($thePokemon);
+        $translatedPokemon = $this->pokemonCache->translated($pokemonName, function () use ($pokemonName) {
+            $thePokemon = $this->getBasicPokemon($pokemonName);
+            $tranlatorCreator = PokemonTranslationChooser::getTranslator($thePokemon);
+            return $tranlatorCreator->translate($thePokemon);
+        });
+
         return $translatedPokemon->toArray();
     }
 }

@@ -12,7 +12,7 @@ interface Pokemon
 
     public function description(): string;
 
-    public function isLegendary(): string;
+    public function isLegendary(): bool;
 
     public function habitat(): ?string;
 

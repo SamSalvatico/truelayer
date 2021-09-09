@@ -47,7 +47,7 @@ class BasicPokemon implements Pokemon
         return $this->description;
     }
 
-    public function isLegendary(): string
+    public function isLegendary(): bool
     {
         return $this->isLegendary;
     }
