@@ -3,6 +3,7 @@
 namespace App\Libraries\PokemonMaster;
 
 use App\Libraries\Pokeball\Pokeball;
+use App\Libraries\PokemonTranslator\PokemonTranslationChooser;
 
 class TrueLayer implements PokemonMaster
 {
@@ -21,6 +22,9 @@ class TrueLayer implements PokemonMaster
 
     public function getTranslatedInfo(string $pokemonName): array
     {
-        return [];
+        $thePokemon = $this->pokeball->catchIt($pokemonName);
+        $tranlatorCreator = PokemonTranslationChooser::getTranslator($thePokemon);
+        $translatedPokemon = $tranlatorCreator->translate($thePokemon);
+        return $translatedPokemon->toArray();
     }
 }

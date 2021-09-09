@@ -76,7 +76,9 @@ class PokeAPIParser
                 isset($currentFlavor['language']) &&
                 $currentFlavor['language']['name'] == self::VALID_LANGUAGE
             ) {
-                return $currentFlavor['flavor_text'];
+                $flavorText = str_replace(["\n", "\f", "\t"], ' ', $currentFlavor['flavor_text']);
+                $flavorText = str_replace("  ", "", $flavorText);
+                return $flavorText;
             }
         }
         return null;
