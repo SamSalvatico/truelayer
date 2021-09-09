@@ -86,7 +86,8 @@ public function basic(string $name): JsonResponse
     }
 ```
 The `pokemonMaster` property is injected thanks to the DI.
-- The PokemonMaster, that concretely is *app/Libraries/PokemonMaster/TrueLayer.php*, look for the requested Pokemon.
+- The PokemonMaster, that concretely is *app/Libraries/PokemonMaster/TrueLayer.php*, look for the requested Pokemon;
+- All relevant code can be found in *app/Libraries*.
 
 
 ## Production TODO
