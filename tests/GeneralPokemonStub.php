@@ -78,11 +78,7 @@ class GeneralPokemonStub
             ],
             'flavor_text_entries' => [
                 0 => [
-                    'flavor_text' => 'When the bulb on
-          its back grows
-          large, it appearsto lose the
-          ability to stand
-          on its hind legs.',
+                    'flavor_text' => self::getValidDescription(),
                     'language' => [
                         'name' => 'en',
                         'url' => 'https://pokeapi.co/api/v2/language/9/',
@@ -95,8 +91,7 @@ class GeneralPokemonStub
             ],
             'form_descriptions' => [
                 0 => [
-                    // phpcs:ignore
-                    'description' => 'Forms have different stats and movepools.  During evolution, Burmy\'s current cloak becomes Wormadam\'s form, and can no longer be changed.',
+                    'description' => "abc",
                     'language' => [
                         'name' => 'en',
                         'url' => 'https://pokeapi.co/api/v2/language/9/',
@@ -124,6 +119,16 @@ class GeneralPokemonStub
         ];
     }
 
+    public static function getValidDescription(): string
+    {
+        $str = 'When the bulb on
+        its back grows
+        large, it appearsto lose the
+        ability to stand
+        on its hind legs.';
+        return $str;
+    }
+
     public static function getValidTranslationResponseBody(): array
     {
         return [
@@ -131,11 +136,16 @@ class GeneralPokemonStub
                 'total' => 1,
             ],
             'contents' => [
-                'translated' => 'Lost a planet,  master obiwan has.',
+                'translated' => self::getValidTranslatedDescription(),
                 'text' => 'Master Obiwan has lost a planet.',
                 'translation' => 'yoda',
             ],
         ];
+    }
+
+    public static function getValidTranslatedDescription(): string
+    {
+        return 'Lost a planet,  master obiwan has.';
     }
 
     public static function stubValidResponsesForBasicAndTranslations(
