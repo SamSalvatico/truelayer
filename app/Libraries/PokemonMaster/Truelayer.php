@@ -27,7 +27,7 @@ class TrueLayer implements PokemonMaster
     {
         $pokeball = $this->pokeball;
         return $this->pokemonCache->basic($pokemonName, function () use ($pokeball, $pokemonName) {
-            $pokeball->catchIt($pokemonName);
+            return $pokeball->catchIt($pokemonName);
         });
     }
 

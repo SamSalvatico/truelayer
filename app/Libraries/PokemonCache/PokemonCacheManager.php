@@ -6,7 +6,7 @@ use App\Libraries\Pokemon\Pokemon;
 use Closure;
 use Illuminate\Support\Facades\Cache;
 
-abstract class PokemonCacheManager
+abstract class PokemonCacheManager implements PokemonCache
 {
     final public function basic(string $pokemonName, Closure $howToGetPokemon): Pokemon
     {
