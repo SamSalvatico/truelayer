@@ -9,6 +9,7 @@
 - [Caching](#caching)
 - [Tests](#tests)
     - [With Makefile](#with-makefile)
+- [Lifecycle](#lifecycle)
 
 ## Project
 
@@ -64,3 +65,27 @@ The next command will run PHPstan, PHPcs and PHPUnit
 $ make test
 ```
 
+### Lifecycle
+
+The lifecycle of a request is the following one:
+- Laravel use the Dependency Inkection binding the concrete classes to the interfaces you that you can find in *app/Providers/AppServiceProvider.php*;
+- Looks for the routes in *routes/api.php*;
+```
+Route::prefix('pokemon')->middleware(['force_json'])->group(function () {
+    Route::get('{name}', [App\Http\Controllers\PokemonController::class, 'basic'])
+        ->name('pokemon.basic');
+    Route::get('translated/{name}', [App\Http\Controllers\PokemonController::class, 'translated'])
+        ->name('pokemon.translated');
+});
+```
+- Once the route is matched, it invokes the relative method in the controller, like the method `basic` in *app/Http/Controllers/PokemonController.php*.
+```
+public function basic(string $name): JsonResponse
+    {
+        return response()->json(
+            $this->pokemonMaster->getBasicInfo($name)
+        );
+    }
+```
+The `pokemonMaster` property is injected thanks to the DI.
+- The PokemonMaster, that concretely is *app/Libraries/PokemonMaster/TrueLayer.php*, look for the requested Pokemon.

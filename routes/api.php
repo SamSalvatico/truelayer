@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('pokemon')->middleware(['force_json'])->group(function () {
     Route::get('{name}', [App\Http\Controllers\PokemonController::class, 'basic'])
         ->name('pokemon.basic');
-
     Route::get('translated/{name}', [App\Http\Controllers\PokemonController::class, 'translated'])
         ->name('pokemon.translated');
 });

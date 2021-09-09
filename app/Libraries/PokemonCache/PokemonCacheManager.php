@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Cache;
 
 abstract class PokemonCacheManager implements PokemonCache
 {
+    /**
+     * If no key is set it executes $howToGetPokemon to get the Pokemon, then it saves to cache.
+     */
     final public function basic(string $pokemonName, Closure $howToGetPokemon): Pokemon
     {
         return Cache::remember(
