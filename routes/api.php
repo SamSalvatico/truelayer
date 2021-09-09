@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::prefix('pokemon')->group(function () {
+Route::prefix('pokemon')->middleware(['force_json'])->group(function () {
     Route::get('{name}', [App\Http\Controllers\PokemonController::class, 'basic'])
         ->name('pokemon.basic');
 
