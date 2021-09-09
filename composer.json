@@ -47,6 +47,14 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "cache-clear": [
+            "@php artisan cache:clear"
+        ],
+        "cache-all": [
+            "@php artisan route:cache",
+            "@php artisan config:cache",
+            "@php artisan view:cache"
         ]
     },
     "extra": {
