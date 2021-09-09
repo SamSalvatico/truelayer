@@ -50,7 +50,7 @@ By default the cache is enabled. If you want to disable it you must open the `.e
 
 Then, to clear the already-existent cache, run
 ```
-make cache-clear
+make clear-all
 ```
 
 ## Tests
