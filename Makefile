@@ -11,7 +11,7 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: install
-install: composer sail-up key-gen check-env cache-all ## Main task
+install: composer sail-up key-gen check-env clear-all ## Main task
 
 .PHONY: composer
 composer:
@@ -78,15 +78,15 @@ endif
 phpstan: ## PHPStan
 	@./vendor/bin/sail php vendor/bin/phpstan
 
-.PHONY: cache-clear
-cache-clear:
+.PHONY: clear-all
+clear-all:
 ifeq ($(COMPOSER),composer)
-	@composer cache-clear
+	@composer clear-all
 else
 	@docker run --rm --interactive --tty \
 		--volume $(PWD):/app \
 		--user $(id -u):$(id -g) \
-		composer:2.0 cache-clear
+		composer:2.0 clear-all
 endif
 
 .PHONY: check-env
