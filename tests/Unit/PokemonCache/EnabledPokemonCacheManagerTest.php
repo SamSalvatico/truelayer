@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Pokeball;
+namespace Tests\Unit\PokemonCache;
 
 use App\Libraries\Pokemon\BasicPokemon;
 use App\Libraries\PokemonCache\EnabledPokemonCacheManager;
