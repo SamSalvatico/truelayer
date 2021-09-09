@@ -18,10 +18,7 @@ The project is based on [Laravel 8](https://laravel.com/docs/8.x) and uses PHP8.
 
 ## Prerequisites
 
-- [Docker](https://docker.com) installed to run it using Sail;
-- Composer
-    - Installed to be able to install Sail, see [Composer](https://getcomposer.org/)
-    - via Docker to install Sail, see [Composer via Docker](https://hub.docker.com/_/composer)
+- [Docker](https://docker.com) installed to run it using Sail.
 
 ## Start with Makefile
 
